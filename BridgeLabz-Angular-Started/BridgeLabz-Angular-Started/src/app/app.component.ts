@@ -21,6 +21,9 @@ export class AppComponent {
   //UC4
   userName: string = "";
 
+  //UC5
+  nameError: string = "";
+
   ngOnInit() : void {
     //UC1
     this.title = "Hello from BridgeLabz.";
@@ -34,4 +37,18 @@ export class AppComponent {
 
   }
 
+  onInput(event : Event){
+    console.log("input event has occurred !", (event.target as HTMLInputElement).value);
+
+    const nameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
+    if(nameRegex.test(this.userName)){
+
+      this.nameError = "";
+      return;
+
+    }
+    else{
+      this.nameError = "Name is Incorrect";
+    }
+  }
 }
